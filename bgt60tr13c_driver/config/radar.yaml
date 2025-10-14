@@ -1,0 +1,22 @@
+bgt60tr13c_node:
+  ros__parameters:
+    # Infineon Avian DeviceConfig
+    sample_rate_Hz: 2000000
+    rx_mask: 7
+    tx_mask: 1
+    if_gain_dB: 33
+    tx_power_level: 31
+    start_frequency_Hz: 5.9e10
+    end_frequency_Hz: 6.1e10
+    num_chirps_per_frame: 32
+    num_samples_per_chirp: 32
+    chirp_repetition_time_s: 0.0005
+    frame_repetition_time_s: 0.1
+    mimo_mode: "off"
+
+    # Driver options
+    publish_magnitude: true # if false, publishes real part
+    topic_prefix: "/ifx_bgt_device/bgt60tr13c"
+    qos_depth: 5
+
+    republish_config_period_s: 2.0

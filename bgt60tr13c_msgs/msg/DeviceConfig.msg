@@ -1,0 +1,13 @@
+# Infineon BGT60TR13C configuration
+uint32 sample_rate_hz
+uint32 rx_mask
+uint32 tx_mask
+uint8  if_gain_db
+uint8  tx_power_level
+float64 start_frequency_hz
+float64 end_frequency_hz
+uint16 num_chirps_per_frame
+uint16 num_samples_per_chirp
+float32 chirp_repetition_time_s
+float32 frame_repetition_time_s
+string mimo_mode
