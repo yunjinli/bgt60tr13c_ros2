@@ -18,11 +18,17 @@ from ifxAvian import Avian
 
 import signal
 
-def open_avian_with_retries(max_tries=100, delay_s=0.3, logger=None):
+def open_avian_with_retries(max_tries=100, delay_s=0.3, logger=None, port=None):
     last_err = None
     for i in range(1, max_tries+1):
         try:
-            dev = Avian.Device()
+            if port == '':
+                logger.info("Find Avian device...")
+                dev = Avian.Device()
+            else:
+                logger.info(f"Launch device from port {port}")
+                dev = Avian.Device(port=port)
+            logger.info("Device launched...")
             return dev
         except Exception as e:
             last_err = e
@@ -81,12 +87,13 @@ class BGT60TR13CNode(Node):
                 ('publish_magnitude', True),
                 ('topic_prefix', '/ifx_bgt_device/bgt60tr13c'),
                 ('qos_depth', 5),
+                ('port', '')
             ]
         )
         p = self.get_parameter
         self.topic_prefix = p('topic_prefix').get_parameter_value().string_value
         qos_depth = p('qos_depth').get_parameter_value().integer_value
-        
+        port = p('port').get_parameter_value().string_value
         # Raw data QoS (best effort for throughput)
         sensor_qos = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,
@@ -133,7 +140,7 @@ class BGT60TR13CNode(Node):
         
         # Open device + set config
         self.get_logger().info('Opening Avian device...')
-        self.dev = open_avian_with_retries(logger=self.get_logger())
+        self.dev = open_avian_with_retries(logger=self.get_logger(), port=port)
 
         # Apply config
         self.dev.set_config(self.cfg)
