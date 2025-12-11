@@ -11,6 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/config', ['config/radar.yaml']),
+        # ('share/' + package_name + '/config', ['config/best_model.pth']),
         ('share/' + package_name + '/launch', ['launch/radar.launch.py']),
     ],
     install_requires=['setuptools'],
@@ -25,6 +26,7 @@ setup(
             'radar_node = bgt60tr13c_driver.radar_node:main',
             'raw_frame_viz = bgt60tr13c_driver.raw_frame_viz:main',
             'raw_frame_viz_cmap = bgt60tr13c_driver.raw_frame_viz_cmap:main',
+            'radar_surface_detection_node = bgt60tr13c_driver.radar_surface_detection_node:main',
         ],
     },
 )
