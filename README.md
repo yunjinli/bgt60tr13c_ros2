@@ -75,3 +75,15 @@ ros2 run bgt60tr13c_driver raw_frame_viz_cmap
 /ifx_bgt60_device/bgt60tr13c/device_config ## (latched)
 /ifx_bgt60_device/bgt60tr13c/raw_frame
 ```
+
+### Radar Surface Detector
+
+```bash
+ros2 run bgt60tr13c_driver radar_surface_detection_node --ros-args -p model_path:=/home/yunjinli/radar_surface_detection/output_test/best_model.pth -p moving_avg_window:=10
+```
+
+or run with launch file.
+
+```bash
+ros2 launch bgt60tr13c_driver radar_surface_detection.launch.py model_path:=<path/to/model> moving_avg_window:=10 model_type:=onnx ## Or with torch model "model_type:=torch"
+```
