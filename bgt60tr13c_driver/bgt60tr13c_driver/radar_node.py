@@ -206,11 +206,12 @@ class BGT60TR13CNode(Node):
         while not self._stop.is_set():
             try:
                 frame = self.dev.get_next_frame()
-                if self.publish_magnitude:
-                    data = np.abs(frame).astype(np.float32)
-                else:
-                    data = np.real(frame).astype(np.float32)
-
+                # if self.publish_magnitude:
+                #     data = np.abs(frame).astype(np.float32)
+                # else:
+                #     data = np.real(frame).astype(np.float32)
+                data = frame
+                # data = np.real(frame).astype(np.float32)
                 raw = RawFrame()
                 raw.stamp = self.get_clock().now().to_msg()
                 raw.num_rx = num_rx

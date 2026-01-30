@@ -8,8 +8,8 @@ bgt60tr13c_node:
     tx_power_level: 31
     start_frequency_Hz: 5.9e10
     end_frequency_Hz: 6.1e10
-    num_chirps_per_frame: 128
-    num_samples_per_chirp: 128
+    num_chirps_per_frame: 32
+    num_samples_per_chirp: 32
     chirp_repetition_time_s: 0.0005
     frame_repetition_time_s: 0.1
     mimo_mode: "off"

@@ -22,6 +22,10 @@ cd ~/ros_ws
 # Build
 colcon build --symlink-install
 source install/setup.bash
+
+# Building ifxAvian
+export MYARCH=linux_x64 ## linux_x64, linux_raspi, win32_x64
+pip install src/bgt60tr13c_ros2/bgt60tr13c_driver/libs/${MYARCH}/ifxAvian-3.3.1-py3-none-any.whl
 ```
 
 ## Run
@@ -42,8 +46,8 @@ bgt60tr13c_node:
     tx_power_level: 31
     start_frequency_Hz: 5.9e10
     end_frequency_Hz: 6.1e10
-    num_chirps_per_frame: 32
-    num_samples_per_chirp: 32
+    num_chirps_per_frame: 128
+    num_samples_per_chirp: 128
     chirp_repetition_time_s: 0.0005
     frame_repetition_time_s: 0.1
     mimo_mode: "off"
